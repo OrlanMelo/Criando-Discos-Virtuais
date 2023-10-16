@@ -8,7 +8,7 @@
 using namespace std;
 
 /* Tratativa de erro ao usar valores de VIRTUAL_STORAGE_TYPE. */
-/* Para usar os valores de VIRTUAL_STORAGE_TYPE, ter· que habilitar a compilaÁ„o de cabeÁalho prÈ-compilado "stdafx.h". */
+/* Para usar os valores de VIRTUAL_STORAGE_TYPE, ter√° que habilitar a compila√ß√£o de cabe√ßalho pr√©-compilado "stdafx.h". */
 
 class cFuncoes
 {
@@ -49,15 +49,19 @@ public:
 		Parametros.Version1.SourcePath = 0;
 		Parametros.Version1.MaximumSize = Tamanho;
 
-		//Esta funÁ„o n„o possui par‚metro de funÁ„o assÌncrona, sendo ˙til apenas de uso sÌncrono.
-		//CREATE_VIRTUAL_DISK_FLAG_NONE para discos din‚micos.
+		//Esta fun√ß√£o n√£o possui par√¢metro de fun√ß√£o ass√≠ncrona, sendo √∫til apenas de uso s√≠ncrono.
+		//CREATE_VIRTUAL_DISK_FLAG_NONE para discos din√¢micos.
 		//CREATE_VIRTUAL_DISK_FLAG_FULL_PHYSICAL_ALLOCATION para discos fixos.
 		if (Dinamico == true)
+		{
 			Result = CreateVirtualDisk(&VirtType, Local.c_str(), VIRTUAL_DISK_ACCESS_ALL, 0,
 				CREATE_VIRTUAL_DISK_FLAG_NONE, 0, &Parametros, 0, &Disco);
+		}
 		else
+		{
 			Result = CreateVirtualDisk(&VirtType, Local.c_str(), VIRTUAL_DISK_ACCESS_ALL, 0,
 				CREATE_VIRTUAL_DISK_FLAG_FULL_PHYSICAL_ALLOCATION, 0, &Parametros, 0, &Disco);
+		}
 	}
 
 }Funcoes;
@@ -65,7 +69,7 @@ public:
 int main()
 {
 
-	cout << "O assistente est· criando um arquivo de disco virtual...";
+	cout << "O assistente est√° criando um arquivo de disco virtual...";
 
 	ULONGLONG TamanhoGB = 1 * 1024 * 1024 * 1024; // 1 GB.
 	ULONGLONG TamanhoMB = 500 * 1024 * 1024; // 500 MB
@@ -76,7 +80,7 @@ int main()
 	}
 	else
 	{
-		cout << "N„o foi possÌvel prosseguir, verifique o cÛdigo de erro: " << GetLastError();
+		cout << "N√£o foi poss√≠vel prosseguir, verifique o c√≥digo de erro: " << GetLastError();
 	}
 
 	system("pause");
